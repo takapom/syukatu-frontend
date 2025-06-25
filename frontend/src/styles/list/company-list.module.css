@@ -1,0 +1,596 @@
+.background {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #0ea5e9 100%);
+    padding: 2rem 1rem;
+    position: relative;
+  }
+  
+  .background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(14, 165, 233, 0.2) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  .loadingContainer {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #0ea5e9 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .spinner {
+    width: 3rem;
+    height: 3rem;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .loadingText {
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .title {
+
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 3rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    animation: fadeIn 0.8s ease-out 0.2s both;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .companyName {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.5rem;
+  }
+  
+  .infoList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .infoItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+  
+  .label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    min-width: 80px;
+  }
+  
+  .value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    text-align: right;
+    flex: 1;
+    margin-left: 1rem;
+  }
+  
+  .unset {
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+  }
+  
+  .positive {
+    color: #86efac;
+    font-weight: 600;
+  }
+  
+  .negative {
+    color: #fca5a5;
+    font-weight: 600;
+  }
+  
+  .errorCard {
+    background: rgba(239, 68, 68, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    border-radius: 16px;
+    padding: 1.5rem;
+    color: #fef2f2;
+    text-align: center;
+    font-size: 1rem;
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  .emptyState {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  
+  .emptyCard {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    font-size: 1.125rem;
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  /* レスポンシブデザイン */
+  @media (max-width: 768px) {
+    .background {
+      padding: 1rem 0.5rem;
+    }
+  
+    .title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+  
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  
+    .card {
+      padding: 1.25rem;
+    }
+  
+    .companyName {
+      font-size: 1.375rem;
+    }
+  
+    .infoItem {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+  
+    .label {
+      min-width: auto;
+    }
+  
+    .value {
+      text-align: left;
+      margin-left: 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .background {
+      padding: 0.5rem 0.25rem;
+    }
+  
+    .title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    .card {
+      padding: 1rem;
+      border-radius: 12px;
+    }
+  
+    .companyName {
+      font-size: 1.25rem;
+    }
+  
+    .label,
+    .value {
+      font-size: 0.9375rem;
+    }
+  }
+  
+  /* アクセシビリティ対応 */
+  @media (prefers-reduced-motion: reduce) {
+    .card,
+    .title,
+    .grid,
+    .errorCard,
+    .emptyCard {
+      animation: none;
+    }
+  
+    .card:hover {
+      transform: none;
+    }
+  
+    .spinner {
+      animation: none;
+    }
+  }
+  
+  /* ダークモード対応 */
+  @media (prefers-color-scheme: dark) {
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  
+    .card:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+  
+
+  .addButton {
+    /* 基本スタイル */
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  
+    /* グラスモーフィズム効果 */
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(29, 78, 216, 0.2) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(172, 184, 205, 0.4);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  
+    /* トランジション */
+    transition: all 0.3s ease;
+  
+    /* アニメーション */
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* ホバー効果 */
+  .addButton:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.4) 0%, rgba(29, 78, 216, 0.3) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-color: rgba(59, 130, 246, 0.6);
+  }
+  
+  /* アクティブ状態 */
+  .addButton:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  /* フォーカス状態 */
+  .addButton:focus {
+    outline: none;
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 0 3px
+      rgba(59, 130, 246, 0.3);
+  }
+  
+  /* 無効状態 */
+  .addButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    background: rgba(156, 163, 175, 0.2);
+    border-color: rgba(156, 163, 175, 0.3);
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .addButton:disabled:hover {
+    transform: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 波紋効果 */
+  .addButton::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+  }
+  
+  .addButton:active::before {
+    width: 300px;
+    height: 300px;
+  }
+  
+  /* レスポンシブデザイン */
+  @media (max-width: 768px) {
+    .addButton {
+      padding: 0.875rem 1.75rem;
+      font-size: 0.9375rem;
+      border-radius: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .addButton {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.875rem;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 200px;
+    }
+  }
+  
+  /* タッチデバイス対応 */
+  @media (hover: none) and (pointer: coarse) {
+    .addButton:hover {
+      transform: none;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(29, 78, 216, 0.2) 100%);
+      box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+  
+    .addButton:active {
+      background: linear-gradient(135deg, rgba(215, 220, 227, 0.5) 0%, rgba(183, 193, 219, 0.4) 100%);
+      transform: scale(0.98);
+    }
+  }
+  
+  /* アクセシビリティ対応 */
+  @media (prefers-reduced-motion: reduce) {
+    .addButton {
+      animation: none;
+      transition: none;
+    }
+  
+    .addButton:hover {
+      transform: none;
+    }
+  
+    .addButton:active {
+      transform: none;
+    }
+  
+    .addButton::before {
+      transition: none;
+    }
+  }
+  
+  /* ハイコントラストモード対応 */
+  @media (prefers-contrast: high) {
+    .addButton {
+      border: 2px solid rgba(59, 130, 246, 0.8);
+      background: rgba(59, 130, 246, 0.4);
+    }
+  
+    .addButton:hover {
+      border-color: rgba(59, 130, 246, 1);
+      background: rgba(59, 130, 246, 0.6);
+    }
+  }
+  
+  /* ダークモード対応 */
+  @media (prefers-color-scheme: dark) {
+    .addButton {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.4) 0%, rgba(29, 78, 216, 0.3) 100%);
+      border-color: rgba(59, 130, 246, 0.5);
+    }
+  
+    .addButton:hover {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.5) 0%, rgba(29, 78, 216, 0.4) 100%);
+      border-color: rgba(59, 130, 246, 0.7);
+    }
+  }
+  
+  /* 大きなボタンバリエーション */
+  .addButton.large {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.125rem;
+    border-radius: 16px;
+  }
+  
+  /* 小さなボタンバリエーション */
+  .addButton.small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border-radius: 8px;
+  }
+  
+  /* アイコン付きボタン用のスタイル */
+  .addButton.withIcon {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* ローディング状態 */
+  .addButton.loading {
+    position: relative;
+    color: transparent;
+  }
+  
+  .addButton.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* カードフッター */
+  .cardFooter {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+  /* 削除ボタン */
+  .deleteButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    
+    /* グラスモーフィズム効果 */
+    background: rgba(239, 68, 68, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    
+    /* トランジション */
+    transition: all 0.3s ease;
+  }
+  
+  .deleteButton:hover {
+    background: rgba(239, 68, 68, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.6);
+  }
+  
+  .deleteButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.15);
+  }
+  
+  .deleteButton:focus {
+    outline: none;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2), 0 0 0 3px rgba(239, 68, 68, 0.3);
+  }
+  
+  .deleteButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    background: rgba(156, 163, 175, 0.2);
+    border-color: rgba(156, 163, 175, 0.3);
+  }
+  
+  .deleteButton:disabled:hover {
+    transform: none;
+    box-shadow: none;
+  }
