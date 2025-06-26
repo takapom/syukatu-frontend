@@ -2,6 +2,7 @@
 "use client"
 
 import { useState } from "react";
+import { API_URL } from "@/lib/api";
 
 //送信するデータの型定義
 interface InternData {
@@ -28,7 +29,7 @@ export default function useIntern() {
             if (!token) {
                 throw new Error("ログインしてください！");
             }
-            const response = await fetch("http://localhost:8080/internships", {
+            const response = await fetch(`${API_URL}/internships`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

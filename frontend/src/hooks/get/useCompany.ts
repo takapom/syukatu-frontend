@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { API_URL } from "@/lib/api";
 
 //フロントエンドで使用する型定義
 interface Company {
@@ -55,7 +56,7 @@ export default function useCompany() {
                 throw new Error("セッションの有効期限が切れました。再度ログインしてください。");
             }
 
-            const res = await fetch("http://localhost:8080/company_lists", {
+            const res = await fetch(`${API_URL}/company_lists`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -107,7 +108,7 @@ export default function useCompany() {
                 throw new Error("ログインが必要です！");
             }
 
-            const res = await fetch(`http://localhost:8080/company_lists/${id}`, {
+            const res = await fetch(`${API_URL}/company_lists/${id}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`,

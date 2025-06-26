@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { API_URL } from "@/lib/api";
 
 export type LoginParams = {
     email: string;
@@ -18,7 +19,7 @@ export const useLogin = () => {
         setError('');
         
         try {
-            const res = await fetch('http://localhost:8080/login', {
+            const res = await fetch(`${API_URL}/login`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),

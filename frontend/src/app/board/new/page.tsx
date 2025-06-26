@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import headerStyles from '@/styles/Header.module.css'
 import styles from '@/styles/board/new-post.module.css'
+import { API_URL } from '@/lib/api'
 
 export default function NewPostPage() {
   const [title, setTitle] = useState('')
@@ -51,7 +52,7 @@ export default function NewPostPage() {
         return
       }
 
-      const response = await fetch('http://localhost:8080/posts', {
+      const response = await fetch(`${API_URL}/posts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

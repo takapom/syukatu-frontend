@@ -1,6 +1,7 @@
 //インターンシップ取得用のカスタムフック
 "use client"
 import { useState, useEffect } from "react";
+import { API_URL } from "@/lib/api";
 import { useRouter } from "next/navigation";
 
 //フロントエンドで使用する型定義
@@ -41,7 +42,7 @@ export default function useIntern(){
                 router.push("/")
                 throw new Error("もう一度ログインをしてください！");
             }
-            const res = await fetch("http://localhost:8080/internships",{
+            const res = await fetch(`${API_URL}/internships`,{
             headers:{
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "application/json"
@@ -84,7 +85,7 @@ export default function useIntern(){
                 throw new Error("ログインが必要です！");
             }
 
-            const res = await fetch(`http://localhost:8080/internships/${id}`, {
+            const res = await fetch(`${API_URL}/internships/${id}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`,

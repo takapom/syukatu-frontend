@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import headerStyles from '@/styles/Header.module.css'
 import styles from '@/styles/board/board.module.css'
+import { API_URL } from '@/lib/api'
 
 interface Post {
   ID: number
@@ -35,7 +36,7 @@ export default function BoardPage() {
         return
       }
 
-      const response = await fetch(`http://localhost:8080/posts?limit=20&offset=${currentOffset}`, {
+      const response = await fetch(`${API_URL}/posts?limit=20&offset=${currentOffset}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -78,7 +79,7 @@ export default function BoardPage() {
           return
         }
 
-        const response = await fetch(`http://localhost:8080/posts?limit=20&offset=0`, {
+        const response = await fetch(`${API_URL}/posts?limit=20&offset=0`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -126,7 +127,7 @@ export default function BoardPage() {
       const token = localStorage.getItem('token')
       const method = isLiked ? 'DELETE' : 'POST'
       
-      const response = await fetch(`http://localhost:8080/posts/${postId}/like`, {
+      const response = await fetch(`${API_URL}/posts/${postId}/like`, {
         method,
         headers: {
           'Authorization': `Bearer ${token}`

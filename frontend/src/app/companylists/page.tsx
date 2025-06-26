@@ -1,5 +1,3 @@
-//企業リスト追加ページ
-
 "use client"
 
 import { useEffect, useState } from 'react';

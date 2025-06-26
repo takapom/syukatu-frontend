@@ -1,5 +1,6 @@
 // src/hooks/useCompanyList.ts
 import { useState } from 'react';
+import { API_URL } from '@/lib/api';
 
 interface CompanyListData {
   company: string;
@@ -28,7 +29,7 @@ export const useCompanyList = (): UseCompanyListReturn => {
       throw new Error('ログインしてください！');
       }
 
-      const response = await fetch('http://localhost:8080/company_lists', {
+      const response = await fetch(`${API_URL}/company_lists`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

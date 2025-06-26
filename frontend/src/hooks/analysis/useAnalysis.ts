@@ -1,8 +1,10 @@
+import { API_URL } from '@/lib/api';
+
 export const useAnalysis = () => {
 
     const FetchDate = async () => {
         try{
-            const res = await fetch("http://localhost/v1");
+            const res = await fetch(`${API_URL}/v1`);
             if (!res.ok){
                 throw new Error("Failed to fetch data");
             }

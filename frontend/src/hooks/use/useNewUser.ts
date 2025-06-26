@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { API_URL } from '@/lib/api';
 
 interface NewUserData {
     email: string;
@@ -13,7 +14,7 @@ export const useNewUser = () => {
 
     const createNewUser = async (userData: NewUserData) => {
         try{
-            const res = await fetch('http://localhost:8080/register',{
+            const res = await fetch(`${API_URL}/register`,{
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({email: userData.email, password: userData.password}),

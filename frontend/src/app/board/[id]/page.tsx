@@ -5,6 +5,7 @@ import { useRouter, useParams } from 'next/navigation'
 import Header from '@/components/Header'
 import headerStyles from '@/styles/Header.module.css'
 import styles from '@/styles/board/post-detail.module.css'
+import { API_URL } from '@/lib/api'
 
 interface Post {
   ID: number
@@ -45,7 +46,7 @@ export default function PostDetailPage() {
           return
         }
 
-        const response = await fetch(`http://localhost:8080/posts/${postId}`, {
+        const response = await fetch(`${API_URL}/posts/${postId}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -78,7 +79,7 @@ export default function PostDetailPage() {
       const token = localStorage.getItem('token')
       const method = isLiked ? 'DELETE' : 'POST'
       
-      const response = await fetch(`http://localhost:8080/posts/${postId}/like`, {
+      const response = await fetch(`${API_URL}/posts/${postId}/like`, {
         method,
         headers: {
           'Authorization': `Bearer ${token}`
@@ -109,7 +110,7 @@ export default function PostDetailPage() {
         return
       }
 
-      const response = await fetch(`http://localhost:8080/posts/${postId}`, {
+      const response = await fetch(`${API_URL}/posts/${postId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -144,7 +145,7 @@ export default function PostDetailPage() {
     try {
       const token = localStorage.getItem('token')
       
-      const response = await fetch(`http://localhost:8080/posts/${postId}/comments`, {
+      const response = await fetch(`${API_URL}/posts/${postId}/comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
