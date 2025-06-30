@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from "react"
 import styles from '@/styles/LoginForm.module.css';
 import { useLogin } from '@/hooks/use/useLogin';
+// import About_Product from './About-Developer';
 
 export default function LoginForm(){
     const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -36,6 +37,7 @@ export default function LoginForm(){
 
    return (
     <div className={styles.container}>
+      {/* <About_Product /> */}
       <div className={styles.backgroundPattern}></div>
       <div className={styles.loginCard}>
         <div className={styles.cardHeader}>

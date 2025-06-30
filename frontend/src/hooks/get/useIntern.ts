@@ -51,6 +51,7 @@ export default function useIntern(){
         if (!res.ok){
             if (res.status === 401) {
                 localStorage.removeItem('token');
+                document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
                 router.push('/');
                 throw new Error("認証に失敗しました。再度ログインしてください。");
             }
@@ -116,5 +117,5 @@ export default function useIntern(){
         fetchInternships();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    return { internships, error, loading, deleteInternship, refetch: fetchInternships };
+    return { internships, error, loading, deleteInternship };
 }

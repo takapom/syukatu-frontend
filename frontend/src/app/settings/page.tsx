@@ -46,6 +46,7 @@ export default function Settings() {
         
         if (Date.now() >= expirationTime) {
           localStorage.removeItem('token')
+          document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
           setIsAuthenticated(false)
         } else {
           setIsAuthenticated(true)
@@ -119,6 +120,8 @@ export default function Settings() {
   const handleLogout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('userSettings')
+    // Remove token from cookie
+    document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
     router.push('/')
   }
 
@@ -127,6 +130,8 @@ export default function Settings() {
       // アカウント削除処理
       localStorage.removeItem('token')
       localStorage.removeItem('userSettings')
+      // Remove token from cookie
+      document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
       router.push('/')
     }
   }
