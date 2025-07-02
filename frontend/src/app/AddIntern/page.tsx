@@ -22,8 +22,8 @@ export default function AddIntern() {
   const [formData, setFormData] = useState<InternData>({
     title: "",
     company: "",
-    dailystart: 9,
-    dailyfinish: 17,
+    dailystart: 0,
+    dailyfinish: 0,
     content: "",
     selection: "",
     joined: false,
@@ -62,22 +62,11 @@ export default function AddIntern() {
     })
   ///フォーム送信時の処理関数
   const handleSubmit = async (data: InternData) => {
-    // バリデーション
-    if (!data.title || !data.company) {
-      alert("タイトルと企業名は必須項目です");
-      return;
-    }
-    
-    if (!data.selection) {
-      alert("選考ステータスを選択してください");
-      return;
-    }
-    
     try{
     const submitData = {
       ...data,
-      dailystart: Number(data.dailystart) || 9,  // デフォルト値を設定
-      dailyfinish: Number(data.dailyfinish) || 17, // デフォルト値を設定
+      dailystart: Number(data.dailystart),
+      dailyfinish: Number(data.dailyfinish),
       selection: data.selection,
       joined: data.joined,
     }

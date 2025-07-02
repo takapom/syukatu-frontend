@@ -42,8 +42,7 @@ export default function useCompany() {
         }
     };
 
-    const 
-    CompanyLists = async () => {
+    const fetchCompanyLists = async () => {
         try {
             const token = localStorage.getItem("token");
             if (!token) {
@@ -53,7 +52,6 @@ export default function useCompany() {
 
             if (!validateToken(token)) {
                 localStorage.removeItem('token');
-                document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
                 router.push('/');
                 throw new Error("セッションの有効期限が切れました。再度ログインしてください。");
             }
@@ -69,7 +67,6 @@ export default function useCompany() {
             if (!res.ok) {
                 if (res.status === 401) {
                     localStorage.removeItem('token');
-                    document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
                     router.push('/');
                     throw new Error("認証に失敗しました。再度ログインしてください。");
                 }
@@ -122,7 +119,6 @@ export default function useCompany() {
             if (!res.ok) {
                 if (res.status === 401) {
                     localStorage.removeItem('token');
-                    document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
                     router.push('/');
                     throw new Error("認証に失敗しました。再度ログインしてください。");
                 }
@@ -140,9 +136,9 @@ export default function useCompany() {
     };
 
     useEffect(() => {
-        CompanyLists();
+        fetchCompanyLists();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return { companyLists, error, loading, deleteCompany, refetch: CompanyLists };
+    return { companyLists, error, loading, deleteCompany, refetch: fetchCompanyLists };
 }

@@ -33,10 +33,6 @@ export const useLogin = () => {
             
             localStorage.setItem('token', data.token);
             localStorage.setItem('userId', data.user_id.toString());
-            
-            // Set token in cookie for server components
-            document.cookie = `token=${data.token}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`;
-            
             router.push('/companylists');
         } catch (err: unknown) {
             if (err instanceof Error) {
