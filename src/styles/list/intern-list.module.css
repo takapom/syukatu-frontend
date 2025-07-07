@@ -166,7 +166,7 @@
     text-align: center;
   }
   
-  .internTitle {
+  .company {
     font-size: 1.375rem;
     font-weight: 700;
     color: white;
@@ -175,11 +175,12 @@
     text-align: center;
   }
   
-  .company {
+  .internTitle {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 500;
     text-align: center;
+    display: block;
   }
   
   .infoList {
@@ -213,16 +214,29 @@
     flex: 1;
     word-break: break-word;
     line-height: 1.5;
+    white-space: pre-wrap;
   }
   
   .completed {
     color: #86efac;
     font-weight: 600;
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    background: rgba(134, 239, 172, 0.2);
+    border-radius: 6px;
+    font-size: 1.0625rem;
+    letter-spacing: 0.025em;
   }
   
   .pending {
     color: #fca5a5;
     font-weight: 600;
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    background: rgba(252, 165, 165, 0.2);
+    border-radius: 6px;
+    font-size: 1.0625rem;
+    letter-spacing: 0.025em;
   }
   
   .errorCard {
@@ -314,7 +328,7 @@
   
   @media (max-width: 768px) {
     .background {
-      padding: 1.5rem;
+      padding: 1rem;
     }
   
     .header {
@@ -326,86 +340,47 @@
   
     .title {
       font-size: 2rem;
-      text-align: left;
+      text-align: center;
     }
   
     .addButtonLink {
-      align-self: flex-start;
+      align-self: center;
     }
   
     .grid {
       grid-template-columns: 1fr;
-      gap: 1.5rem;
-      padding: 0 1.5rem;
+      gap: 1rem;
+      padding: 0;
     }
   
     .card {
-      padding: 1rem;
-    }
-  
-    .internTitle {
-      font-size: 1.125rem;
-    }
-  
-    .company {
-      font-size: 0.875rem;
-      text-align: center;
-    }
-  
-    .infoItem {
-      flex-direction: row;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.375rem 0;
-    }
-  
-    .label {
-      min-width: auto;
-      font-size: 1.05rem;
-      font-weight: 500;
-    }
-  
-    .value {
-      text-align: right;
-      font-size: 1.05rem;
-      line-height: 1.4;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .background {
-      padding: 1.25rem;
-    }
-  
-    .title {
-      font-size: 1.75rem;
-      margin-bottom: 1.5rem;
-    }
-  
-    .grid {
-      padding: 0 1.25rem;
-      gap: 1.25rem;
-    }
-  
-    .card {
-      padding: 0.875rem;
-      border-radius: 12px;
+      padding: 1.125rem;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.18);
     }
   
     .cardHeader {
       margin-bottom: 0.75rem;
       padding-bottom: 0.5rem;
-    }
-  
-    .internTitle {
-      text-align: center;
-      font-size: 1.2rem;
-      margin-bottom: 0.125rem;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
     }
   
     .company {
-      font-size: 0.975rem;
+      font-size: 1.625rem;
+      line-height: 1.2;
+      margin-bottom: 0.375rem;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    }
+  
+    .internTitle {
+      font-size: 1.1875rem;
       text-align: center;
+      opacity: 1;
+      display: block;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.95);
     }
   
     .infoList {
@@ -413,32 +388,142 @@
     }
   
     .infoItem {
-      padding: 0.25rem 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+      padding: 0.75rem;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.2s ease;
+    }
+    
+    .infoItem:active {
+      background: rgba(255, 255, 255, 0.12);
+      transform: scale(0.98);
     }
   
     .label {
-      font-size: 0.975rem;
-      font-weight: 500;
+      min-width: auto;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: none;
+      letter-spacing: 0;
+      margin-bottom: 0.375rem;
     }
   
     .value {
-      font-size: 0.975rem;
-      line-height: 1.4;
-    }
-  
-    .addButton {
-      padding: 0.75rem 1.25rem;
-      font-size: 0.875rem;
+      text-align: left;
+      font-size: 1.125rem;
+      line-height: 1.5;
+      font-weight: 500;
+      width: 100%;
+      color: white;
     }
     
     .cardFooter {
       margin-top: 0.75rem;
       padding-top: 0.75rem;
+      justify-content: center;
     }
     
     .deleteButton {
-      padding: 0.375rem 0.875rem;
+      width: 100%;
+      padding: 0.875rem;
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .background {
+      padding: 0.75rem;
+    }
+  
+    .title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    .grid {
+      padding: 0;
+      gap: 0.875rem;
+    }
+  
+    .card {
+      padding: 0.875rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+    }
+  
+    .cardHeader {
+      margin-bottom: 0.625rem;
+      padding-bottom: 0.5rem;
+      text-align: left;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+    }
+  
+    .company {
+      text-align: left;
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+      line-height: 1.2;
+      font-weight: 700;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    }
+  
+    .internTitle {
+      font-size: 1.125rem;
+      text-align: left;
+      display: block;
+      opacity: 1;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.95);
+    }
+  
+    .infoList {
+      gap: 0.375rem;
+    }
+  
+    .infoItem {
+      padding: 0.625rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+    }
+  
+    .label {
       font-size: 0.8125rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 0.25rem;
+      display: block;
+      opacity: 0.9;
+    }
+  
+    .value {
+      font-size: 1.125rem;
+      line-height: 1.45;
+      display: block;
+      font-weight: 500;
+      color: white;
+    }
+  
+    .addButton {
+      padding: 0.875rem 1.5rem;
+      font-size: 0.9375rem;
+      width: 100%;
+      max-width: 200px;
+    }
+    
+    .cardFooter {
+      margin-top: 0.625rem;
+      padding-top: 0.625rem;
+    }
+    
+    .deleteButton {
+      padding: 0.75rem;
+      font-size: 0.9375rem;
     }
   }
   

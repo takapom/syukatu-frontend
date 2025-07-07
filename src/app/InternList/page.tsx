@@ -71,8 +71,8 @@ export default function InternList() {
             {internships.map((intern) => (
               <div key={intern.id} className={styles.card}>
                 <div className={styles.cardHeader}>
-                  <h3 className={styles.internTitle}>{intern.title}</h3>
-                  <span className={styles.company}>（{intern.company}）</span>
+                  <h3 className={styles.company}>{intern.company}</h3>
+                  <span className={styles.internTitle}>{intern.title}</span>
                 </div>
 
                 <div className={styles.infoList}>
@@ -85,7 +85,7 @@ export default function InternList() {
 
                   <div className={styles.infoItem}>
                     <span className={styles.label}>内容:</span>
-                    <span className={styles.value}>{intern.content}</span>
+                    <span className={styles.value} style={{ whiteSpace: 'pre-wrap' }}>{intern.content}</span>
                   </div>
 
                   <div className={styles.infoItem}>

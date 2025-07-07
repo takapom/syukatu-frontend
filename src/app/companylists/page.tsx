@@ -21,7 +21,7 @@ export default function InputCompanyList() {
     const [formData, setFormData] = useState<CompanyListDate>({
         company: '',
         occupation: '',
-        member: 1,
+        member: 0,
         selection: '',
         intern: false,
     });
@@ -69,7 +69,7 @@ export default function InputCompanyList() {
             [name]: type === 'checkbox' 
                 ? (e.target as HTMLInputElement).checked 
                 : name === 'member'  // memberフィールドの場合
-                    ? parseInt(value) || 1  // 数値に変換、無効な値の場合は1をデフォルト値として使用
+                    ? parseInt(value)  // 数値に変換、無効な値の場合は0をデフォルト値として使用
                     : value
         }));
     };
@@ -80,7 +80,7 @@ export default function InputCompanyList() {
             // 送信前に数値型であることを確認(バリデーション)
             const submitData = {
                 ...date,
-                member: Number(date.member) || 1  // 確実に数値型に変換
+                member: Number(date.member) || 0  // 確実に数値型に変換
             };
             await addCompanyList(submitData);
             alert("企業情報を追加しました！");
@@ -158,7 +158,7 @@ export default function InputCompanyList() {
                                     value={formData.member}
                                     onChange={handleChange}
                                     required
-                                    min="1"
+                                    placeholder='0'
                                     className={styles.input}
                                 />
                             </div>
